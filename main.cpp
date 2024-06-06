@@ -1,11 +1,20 @@
 #include <iostream>
-#include "modul/books/list_buku.h"
+#include "data/buku.h"
+#include "data/transaksi.h"
+#include "modul/utils.h"
+#include "modul/pengembalian.cpp"
+#include "modul/peminjaman.cpp"
+#include "modul/cek_denda.cpp"
+#include "modul/show_buku.cpp"
 
 using namespace std;
 
 int main()
 {
-    // example of using show_buku function
-    show_buku(list_buku, 10, 0);
+    // contoh aja mank
+    show_buku();
+    peminjaman();
+    cek_denda();
+    pengembalian();
     return 0;
 }
