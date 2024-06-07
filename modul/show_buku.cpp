@@ -16,7 +16,4 @@ void show_buku()
         {8, "Buku 8", "Penulis 8", "Penerbit 8", 2027, "Deskripsi 8", 80000},
         {9, "Buku 9", "Penulis 9", "Penerbit 9", 2028, "Deskripsi 9", 90000},
         {10, "Buku 10", "Penulis 10", "Penerbit 10", 2029, "Deskripsi 10", 100000}};
-
-    // show buku disini
-    // ...
 }

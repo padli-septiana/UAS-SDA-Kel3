@@ -12,7 +12,7 @@ struct transaksi
     string alamat;
     string no_telp;
     string email;
-    string buku;
+    int buku;
     string tanggal_pinjam;
     string tanggal_kembali;
     int denda;
