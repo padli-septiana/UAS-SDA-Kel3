@@ -30,10 +30,10 @@ int main()
     cin >> id;
     cin.ignore();
 
-    cout << "Judul: "
+    cout << "Judul: ";
     getline (cin, judul);
 
-    int hari_terlambat = 3; //masukan harinya terlambatnya disini ya:)
+    int hari_terlambat = 3; //masukin harinya terlambatnya disini ya:)
 
     double harga_denda = 500.0;
 
