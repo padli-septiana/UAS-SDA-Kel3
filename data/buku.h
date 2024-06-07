@@ -13,7 +13,7 @@ struct buku
     string penerbit;
     int tahun_terbit;
     string deskripsi;
-    int harga
+    int harga;
 };
 
 // void show_buku(buku list_buku[], int n, int i)

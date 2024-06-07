@@ -15,7 +15,7 @@ struct transaksi
     string buku;
     string tanggal_pinjam;
     string tanggal_kembali;
-    int denda = 0;
-}
+    int denda;
+};
 
 #endif
