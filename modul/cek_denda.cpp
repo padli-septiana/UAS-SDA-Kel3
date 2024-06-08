@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void cek_denda(const string& tanggal_terlambat, const string& id, const string& judul, int hari_terlambat, double harga_denda) 
+cek_denda(const string &tanggal_terlambat, const string &id, const string &judul, int hari_terlambat, double harga_denda)
 {
     double denda = 0;
 
@@ -13,32 +13,27 @@ void cek_denda(const string& tanggal_terlambat, const string& id, const string& 
         denda = hari_terlambat * harga_denda;
     }
 
-    cout << "ID: " << id <<endl;
-    cout << "Judul: " << judul <<endl;
-    cout << "Jumlah Hari Terlambat: " <<  hari_terlambat << " hari " <<endl;
-    cout << " Harga Denda Perhari: Rp " << harga_denda << endl;
-    cout << "Total Denda: Rp " << denda << endl;
+    return denda;
 }
 
-int main()
-{
-    string tanggal_terlambat = "2024-06-11" ;
-    string id;
-    string judul;
+// int main()
+// {
+//     string tanggal_terlambat = "2024-06-11";
+//     string id;
+//     string judul;
 
-    cout << "Masukan ID: ";
-    cin >> id;
-    cin.ignore();
+//     cout << "Masukan ID: ";
+//     cin >> id;
+//     cin.ignore();
 
-    cout << "Judul: ";
-    getline (cin, judul);
+//     cout << "Judul: ";
+//     getline(cin, judul);
 
-    int hari_terlambat = 3; //masukin harinya terlambatnya disini ya:)
+//     int hari_terlambat = 3; // masukin harinya terlambatnya disini ya:)
 
-    double harga_denda = 500.0;
+//     double harga_denda = 500.0;
 
-    cek_denda(tanggal_terlambat, id, judul, hari_terlambat, harga_denda);
+//     cek_denda(tanggal_terlambat, id, judul, hari_terlambat, harga_denda);
 
-    return 0;
-}
-
+//     return 0;
+// }
