@@ -2,10 +2,12 @@
 #define LIST_TRANSAKSI_H
 
 #include <iostream>
+#include <string>
+#include <vector>
 
 using namespace std;
 
-struct transaksi
+struct Transaksi
 {
     int id;
     string nama;
@@ -14,9 +16,21 @@ struct transaksi
     string email;
     int buku;
     string tanggal_pinjam;
-    int batas_pengembalian;
+    string batas_pengembalian;
     string hari_pengembalian;
     int denda;
+};
+
+void declare_transaksi()
+{
+    Transaksi data_transaksi[100] = {};
+}
+
+void declare_dummy_late_transaksi()
+{
+    Transaksi data_transaksi[100] = {
+        {123, "Rizky", "Jl. Kebon Jeruk", "08123456789", "email", 9, "2024-06-01", "2024-06-08", "", 0},
+    };
 };
 
 #endif

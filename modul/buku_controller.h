@@ -129,4 +129,53 @@ void insert_books()
     insert_buku(data_buku9);
     insert_buku(data_buku10);
 }
+
+void updateStatusBuku(treeBuku **root, int id)
+{
+    int level = 0;
+    treeBuku *temp = *root;
+
+    while (temp != NULL)
+    {
+        level++;
+        if (temp->data.id == id)
+        {
+            temp->data.status = "Tidak Tersedia";
+        }
+        else if (id < temp->data.id)
+        {
+            temp = temp->left;
+        }
+        else
+        {
+            temp = temp->right;
+        }
+    }
+
+    // cout << "data tidak ditemukan" << endl;
+}
+
+Buku updateBukuStatus(Buku data)
+{
+    treeBuku *temp = pohonBuku;
+    while (temp != NULL)
+    {
+        if (temp->data.id == data.id)
+        {
+            temp->data.status = data.status;
+            return temp->data;
+        }
+        else if (data.id < temp->data.id)
+        {
+            temp = temp->left;
+        }
+        else
+        {
+            temp = temp->right;
+        }
+    }
+
+    return {};
+}
+
 #endif

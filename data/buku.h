@@ -25,12 +25,6 @@ struct treeBuku
 
 treeBuku *pohonBuku, *rootBuku;
 
-void declare_buku()
-{
-    pohonBuku = NULL;
-    rootBuku = NULL;
-}
-
 Buku data_buku1 = {1, "Bumi Manusia", "Pramoedya Ananta Toer", "Hasta Mitra", 1980, "Bumi Manusia adalah sebuah novel karya Pramoedya Ananta Toer, yang merupakan bagian pertama dari Tetralogi Buru. Novel ini berlatar belakang di Hindia Belanda pada awal abad ke-20 dan mengisahkan kehidupan Minke, seorang pribumi terpelajar yang berusaha menghadapi ketidakadilan kolonial dan menemukan identitasnya. Cerita ini juga menggambarkan hubungannya dengan Nyai Ontosoroh, seorang wanita pribumi yang kuat dan berpengaruh. Melalui 'Bumi Manusia', Pramoedya mengeksplorasi tema-tema sosial, politik, dan budaya, serta kritik terhadap kolonialisme dan perjuangan untuk kebebasan. Novel ini dianggap sebagai salah satu karya sastra Indonesia yang paling penting dan berpengaruh.", 10000, "Tersedia"};
 Buku data_buku2 = {2, "The Architecture of Love", "Ika Natassa", "Gramedia Pustaka Utama", 2016, "Architecture of Love adalah sebuah novel karya Ika Natassa, yang mengisahkan perjalanan hidup dan cinta Raia, seorang penulis yang sedang mengalami kebuntuan dalam kariernya. Dalam usahanya mencari inspirasi, Raia melakukan perjalanan ke New York, di mana ia bertemu dengan River, seorang arsitek. Pertemuan ini membuka babak baru dalam hidupnya, di mana keduanya saling berbagi cerita, mimpi, dan luka masa lalu. Melalui interaksi mereka, novel ini mengeksplorasi tema cinta, kehilangan, dan penyembuhan, serta bagaimana dua orang dapat saling mempengaruhi dan menemukan kembali makna hidup. 'The Architecture of Love' menyajikan kisah yang mengharukan dengan latar kota New York yang memukau.", 20000, "Tersedia"};
 Buku data_buku3 = {3, "Perahu Kertas", "Dewi Lestari", "Bentang Pustaka", 2009, "Perahu Kertas adalah sebuah novel karya Dewi Dee Lestari yang mengisahkan tentang perjalanan hidup dan cinta dua remaja, Kugy dan Keenan. Kugy adalah seorang gadis yang bercita-cita menjadi penulis dongeng, sementara Keenan adalah seorang pemuda berbakat yang bermimpi menjadi pelukis. Pertemuan mereka membawa petualangan dan tantangan, terutama dalam mengejar impian dan menghadapi realitas kehidupan. Melalui karakter-karakter yang kuat dan alur cerita yang menyentuh, 'Perahu Kertas' mengeksplorasi tema-tema persahabatan, cinta, dan pencarian jati diri. Novel ini telah diadaptasi menjadi film dan mendapatkan banyak apresiasi dari pembaca dan kritikus.", 30000, "Tersedia"};
