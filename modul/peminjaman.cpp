@@ -1,7 +1,7 @@
 #include <iostream>
 #include "../data/transaksi.h"
 #include "../data/buku.h"
-#include "utils.h"
+#include "../utils.h"
 using namespace std;
 
 transaksi list_buku_dipinjam[100];
@@ -69,6 +69,15 @@ bool findTree(TreeNode *root, int cari)
     return false;
 }
 
+void deleteTree(TreeNode *&root) {
+    if (root != nullptr) {
+        deleteTree(root->left);
+        deleteTree(root->right);
+        delete root;
+        root = nullptr; 
+    }
+}
+
 void peminjaman(TreeNode *&root)
 {
     
@@ -99,10 +108,20 @@ void peminjaman(TreeNode *&root)
     // cout << "Nomor Telepon: " << nomor_telepon << endl;
     // cout << "Email: " << email << endl;
     // cout << "ID Buku: " << id_buku << endl;
+    for (int i = 0; i < jumlah_antrian; ++i)
+    {
+        root = insertTree(root, list_antrian[i]);
+    }
+
+    for (int i = 0; i < jumlah_peminjaman; ++i)
+    {
+        root = insertTree(root, list_buku_dipinjam[i]);
+    }
 
     if (findTree(root, id_buku))
     {
-        cout << "\n Masuk ke antrian \n" << endl;
+        cout << "\n Masuk ke antrian \n"
+             << endl;
         list_antrian[jumlah_antrian].id = jumlah_antrian + 1;
         list_antrian[jumlah_antrian].nama = nama;
         list_antrian[jumlah_antrian].alamat = alamat;
@@ -118,13 +137,13 @@ void peminjaman(TreeNode *&root)
         cout << "ID Buku: " << list_antrian[jumlah_antrian].buku << endl;
         cout << "--------------------------" << endl;
 
-        root = insertTree(root, list_antrian[jumlah_antrian]);
 
         jumlah_antrian++;
     }
     else
     {
-        cout << "\n Masuk ke peminjaman \n" << endl;
+        cout << "\n Masuk ke peminjaman \n"
+             << endl;
         list_buku_dipinjam[jumlah_peminjaman].id = jumlah_peminjaman + 1;
         list_buku_dipinjam[jumlah_peminjaman].nama = nama;
         list_buku_dipinjam[jumlah_peminjaman].alamat = alamat;
@@ -142,13 +161,58 @@ void peminjaman(TreeNode *&root)
         cout << "Tanggal Peminjaman: " << list_buku_dipinjam[jumlah_peminjaman].tanggal_pinjam << endl;
         cout << "--------------------------" << endl;
 
-        root = insertTree(root, list_buku_dipinjam[jumlah_peminjaman]);
-
         jumlah_peminjaman++;
+    }
+    deleteTree(root);
+
+}
+
+void printTransaksi(transaksi arr[], int jumlah)
+{
+    for (int i = 0; i < jumlah; ++i)
+    {
+        cout << "ID: " << arr[i].id << endl;
+        cout << "Nama: " << arr[i].nama << endl;
+        cout << "Alamat: " << arr[i].alamat << endl;
+        cout << "Nomor Telepon: " << arr[i].no_telp << endl;
+        cout << "Email: " << arr[i].email << endl;
+        cout << "ID Buku: " << arr[i].buku << endl;
+        if (arr[i].tanggal_pinjam != "")
+        {
+            cout << "Tanggal Peminjaman: " << arr[i].tanggal_pinjam << endl;
+        }
+        cout << "--------------------------" << endl;
+    }
+
+
+}
+
+void deleteQueue(int id_buku)
+{
+    bool found = false;
+
+    for (int i = 0; i < jumlah_antrian; ++i)
+    {
+        if (list_antrian[i].buku == id_buku)
+        {
+            found = true;
+            cout << "Data dengan ID Buku " << id_buku << " dikeluarkan dari antrian." << endl;
+
+            for (int j = i; j < jumlah_antrian - 1; ++j)
+            {
+                list_antrian[j] = list_antrian[j + 1];
+            }
+            jumlah_antrian--;
+            break;
+        }
+    }
+
+    if (!found)
+    {
+        cout << "Data dengan ID Buku " << id_buku << " tidak ditemukan dalam antrian." << endl;
     }
 }
 
-// contoh main
 // int main()
 // {
 //     TreeNode *root = nullptr;
@@ -161,7 +225,22 @@ void peminjaman(TreeNode *&root)
 //         cin >> choice;
 //     } while (choice == 'y' || choice == 'Y');
 
+//     cout << "Data dari list antrian:" << endl;
+//     printTransaksi(list_antrian, jumlah_antrian);
+
+//     cout << "Data dari list buku yang sedang dipinjam:" << endl;
+//     printTransaksi(list_buku_dipinjam, jumlah_peminjaman);
+
+
+//     int id_buku_to_delete;
+//     cout << "Masukkan ID Buku yang ingin dihapus dari antrian: ";
+//     cin >> id_buku_to_delete;
+
+//     deleteQueue(id_buku_to_delete);
+
+//     cout << "Data antrian setelah penghapusan:" << endl;
+//     printTransaksi(list_antrian, jumlah_antrian);
+
 //     return 0;
 // }
-
 
