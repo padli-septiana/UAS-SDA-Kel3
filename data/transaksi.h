@@ -14,7 +14,8 @@ struct transaksi
     string email;
     int buku;
     string tanggal_pinjam;
-    string tanggal_kembali;
+    int batas_pengembalian;
+    string hari_pengembalian;
     int denda;
 };
 

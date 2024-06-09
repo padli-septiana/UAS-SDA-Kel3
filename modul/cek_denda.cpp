@@ -1,16 +1,18 @@
 #include <iostream>
 #include <ctime>
 #include "../data/transaksi.h"
+#include "cek_denda.h"
 
 using namespace std;
 
-cek_denda(const string &tanggal_terlambat, const string &id, const string &judul, int hari_terlambat, double harga_denda)
+double cek_denda(const string &tanggal_terlambat, int hari_terlambat, double harga_denda)
 {
     double denda = 0;
 
     if (hari_terlambat > 0)
     {
         denda = hari_terlambat * harga_denda;
+        
     }
 
     return denda;
