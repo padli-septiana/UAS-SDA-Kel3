@@ -1,18 +1,19 @@
 #include <iostream>
+#include <string>
 
 #include "data/buku.h"
 #include "modul/buku_controller.h"
 #include "modul/utils.h"
 #include "data/transaksi.h"
 #include "modul/transaksi_controller.h"
-#include "data/antria.h"
+#include "data/antrian.h"
 // #include "modul/pengembalian.cpp"
 // #include "modul/peminjaman.cpp"
 // #include "modul/cek_denda.cpp"
 
 using namespace std;
 
-void menuPeminjaman(Transaksi data_transaksi[100], treeBuku *pohonBuku)
+void menuPeminjaman(RiwayatTransaksi &riwayat, treeBuku *pohonBuku)
 {
     int bukuPinjam, konfirmPinjam;
     string dapatPinjam;
@@ -60,23 +61,22 @@ void menuPeminjaman(Transaksi data_transaksi[100], treeBuku *pohonBuku)
 
             if (konfirmPinjam == 1)
             {
-                pinjam_buku(data_transaksi, bukuhasil);
+                pinjam_buku(riwayat, bukuhasil);
             }
         }
     }
 }
 
-void menuPengembalian(Transaksi data_transaksi[100], treeBuku *pohonBuku)
+void menuPengembalian(RiwayatTransaksi &riwayat, treeBuku *pohonBuku)
 {
     int id_peminjaman;
     cout << "Masukkan id peminjaman: ";
     cin >> id_peminjaman;
-    Transaksi transaksi = find_id_transaksi(data_transaksi, id_peminjaman);
-    cout << "id: " << transaksi.id << endl;
-    cout << "hari pengembalian: " << transaksi.hari_pengembalian << endl;
-    if (transaksi.id != 0 && transaksi.hari_pengembalian == "")
+
+    Transaksi transaksi = find_transaksi_by_id(riwayat, id_peminjaman);
+    if (transaksi.id != 0)
     {
-        kembalikan_buku(data_transaksi, transaksi, pohonBuku);
+        kembalikan_buku(riwayat, transaksi, pohonBuku);
     }
     else
     {
@@ -91,8 +91,13 @@ int main()
 
     pohonBuku, rootBuku = NULL;
     insert_books();
-    Transaksi data_transaksi[100] = {
-        {123, "Rizky", "Jl. Kebon Jeruk", "08123456789", "email", 9, "2024-06-01", "2024-06-08", "", 0}};
+    RiwayatTransaksi riwayat;
+    riwayat.top = 0;
+    Transaksi temp = {123, "Rizky", "Jl. Kebon Jeruk", "08123456789", "email", 9, "2024-06-01", "2024-06-08", "", 0};
+    riwayat.data[0] = temp;
+
+    // Transaksi data_transaksi[100] = {
+    //     {123, "Rizky", "Jl. Kebon Jeruk", "08123456789", "email", 9, "2024-06-01", "2024-06-08", "", 0}};
 
     while (runApps == 1)
     {
@@ -105,18 +110,22 @@ int main()
 
         cout << "1. Peminjaman Buku" << endl;
         cout << "2. Pengembalian Buku" << endl;
+        cout << "3. Lihat Transaksi" << endl;
         cout << "Pilih menu: ";
         cin >> menu1;
 
         switch (menu1)
         {
         case 1:
-            menuPeminjaman(data_transaksi, pohonBuku);
+            menuPeminjaman(riwayat, pohonBuku);
             break;
         case 2:
-            menuPengembalian(data_transaksi, pohonBuku);
+            menuPengembalian(riwayat, pohonBuku);
             break;
         case 3:
+            show_transaksi(riwayat);
+            enterToContinue();
+            break;
         case 9:
             runApps = 0;
             break;

@@ -21,10 +21,11 @@ struct Transaksi
     int denda;
 };
 
-void declare_transaksi()
+struct RiwayatTransaksi
 {
-    Transaksi data_transaksi[100] = {};
-}
+    int top;
+    Transaksi data[100];
+};
 
 void declare_dummy_late_transaksi()
 {

@@ -2,8 +2,8 @@
 #define ANTRIAN_H
 
 #include <iostream>
-#include 'transaksi.h'
-#include 'buku.h'
+#include "transaksi.h"
+#include "buku.h"
 
 using namespace std;
 
@@ -16,88 +16,88 @@ struct DataAntrian
     string alamat;
     string no_telp;
     string email;
-    int buku;
-}
+};
 
 struct Antrian
 {
-    int top;
-    DataAntrian data[MaksAntrian];
+    int no;
+    int buku;
+    DataAntrian data[5];
 } q;
 
-Antrian.top = 0;
+// bool isAntrianEmpty()
+// {
+//     if (Antrian.top == 0)
+//     {
+//         return true;
+//     }
+//     else
+//     {
+//         return false;
+//     }
+// }
 
-bool isAntrianEmpty()
-{
-    if (Antrian.top == 0)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
+// bool isAntrianFull()
+// {
+//     int MaksAntrian = 5;
 
-bool isAntrianFull()
-{
-    if (Antrian.top == MaksAntrian)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
+//     if (Antrian.top == MaksAntrian)
+//     {
+//         return true;
+//     }
+//     else
+//     {
+//         return false;
+//     }
+// }
 
-void tambahAntrian(DataAntrian data)
-{
-    if (isAntrianFull())
-    {
-        cout << "Antrian sudah penuh" << endl;
-    }
-    else
-    {
-        Antrian.data[Antrian.top] = data;
-        Antrian.top++;
-    }
-}
+// void tambahAntrian(DataAntrian data)
+// {
+//     if (isAntrianFull())
+//     {
+//         cout << "Antrian sudah penuh" << endl;
+//     }
+//     else
+//     {
+//         Antrian.data[Antrian.top] = data;
+//         Antrian.top++;
+//     }
+// }
 
-void hapusAntrian()
-{
-    if (isAntrianEmpty())
-    {
-        cout << "Antrian kosong" << endl;
-    }
-    else
-    {
-        DataAntrian pop = Antrian.data[0];
-        int i;
-        while (i < Antrian.top)
-        {
-            Antrian.data[i - 1] = Antrian.data[i];
-            i++;
-        }
-        Antrian.top--;
-    }
-}
+// void hapusAntrian()
+// {
+//     if (isAntrianEmpty())
+//     {
+//         cout << "Antrian kosong" << endl;
+//     }
+//     else
+//     {
+//         DataAntrian pop = Antrian.data[0];
+//         int i;
+//         while (i < Antrian.top)
+//         {
+//             Antrian.data[i - 1] = Antrian.data[i];
+//             i++;
+//         }
+//         Antrian.top--;
+//     }
+// }
 
-void displayAntrian()
-{
-    if (!isAntrianEmpty())
-    {
-        cout << "Antrian" << endl;
-        for (int i = 0; i < Antrian.top; i++)
-        {
-            cout << "Data: " << Antrian.data[i].nama << " - " << Antrian.data[i].buku << endl;
-        }
-    }
-    else
-    {
-        cout << "Tidak ada data" << enld;
-    }
-}
+// void displayAntrian()
+// {
+//     if (!isAntrianEmpty())
+//     {
+//         cout << "Antrian" << endl;
+//         for (int i = 0; i < Antrian.top; i++)
+//         {
+//             cout << "Data: " << Antrian.data[i].nama << " - " << Antrian.data[i].buku << endl;
+//         }
+//     }
+//     else
+//     {
+//         cout << "Tidak ada data" << enld;
+//     }
+// }
 
 // struct Antrian
 // {
@@ -227,4 +227,4 @@ void displayAntrian()
 //     }
 // }
 
-// #endif
+#endif
